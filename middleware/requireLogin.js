@@ -5,7 +5,7 @@ const User = mongoose.model("User");
 
 module.exports = (req, res, next) => {
   console.log("this is in require login");
-  console.log(req);
+  //console.log(req);
   const { authorization } = req.headers;
   console.log(authorization);
 
