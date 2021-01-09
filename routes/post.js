@@ -678,7 +678,7 @@ router.get("/myreviews", requireLogin, (req, res) => {
   Review.find({ postedBy: req.user._id })
     .populate("postedBy", "_id name")
     .then((post) => {
-      res.json(post);
+      res.send(post);
     })
     .catch((err) => {
       console.log(err);
