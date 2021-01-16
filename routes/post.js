@@ -870,7 +870,7 @@ router.post("/bookappointment", requireLogin, (req, res) => {
       });
     console.log(appointment);
       appointment.save().then((result) => {
-//         res.json({ post: result });
+        res.json(result);
         console.log("this is result     ",result);
       });
     })
