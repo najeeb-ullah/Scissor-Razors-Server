@@ -848,17 +848,19 @@ router.post("/bookappointment", requireLogin, (req, res) => {
   console.log("this is user data  ",req.user);
 
   if (!date || !time || !barber) {
+    console.log("in that block");
     return res.status(422).json({ error: "kindly add all the fields" });
   }
 
   Appointment.findOne({ time: time, date: date, barber: barber })
     .then((data) => {
       if (data) {
-        return res
-          .status(422)
-          .json({ error: "Slot is booked kindly select another one" });
+        console.log("in data block");
+        res.status(422).json({ error: "Slot is booked kindly select another one" });
+        
+        return;
       }
-console.log("before save");
+
       req.user.password = undefined;
       const appointment = new Appointment({
         date,
@@ -866,6 +868,7 @@ console.log("before save");
         barber,
         postedBy: req.user,
       });
+    console.log(appointment);
       appointment.save().then((result) => {
 //         res.json({ post: result });
         console.log("this is result     ",result);
