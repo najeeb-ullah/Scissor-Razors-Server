@@ -844,6 +844,7 @@ router.post("/birthdayemail", requireLogin, (req, res) => {
 
 router.post("/bookappointment", requireLogin, (req, res) => {
   const { date, time, barber } = req.body;
+  console.log("this is req body   ",req.body);
 
   if (!date || !time || !barber) {
     return res.status(422).json({ error: "kindly add all the fields" });
