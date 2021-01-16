@@ -858,7 +858,7 @@ router.post("/bookappointment", requireLogin, (req, res) => {
           .status(422)
           .json({ error: "Slot is booked kindly select another one" });
       }
-
+console.log("before save");
       req.user.password = undefined;
       const appointment = new Appointment({
         date,
@@ -867,7 +867,7 @@ router.post("/bookappointment", requireLogin, (req, res) => {
         postedBy: req.user,
       });
       appointment.save().then((result) => {
-        res.json({ post: result });
+//         res.json({ post: result });
         console.log("this is result     ",result);
       });
     })
